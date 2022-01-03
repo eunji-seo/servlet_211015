@@ -24,6 +24,7 @@ public class GetMethodEx03 extends HttpServlet{
 		
 		
 		PrintWriter out = response.getWriter();
+		out.print("test");
 //		out.println("user_id:" +userId);
 //		out.println("name:"+ name);
 //		out.println("age:"+age);
