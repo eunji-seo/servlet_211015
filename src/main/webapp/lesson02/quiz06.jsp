@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계산기</title>
+<title>장보기 목록</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -15,45 +19,38 @@
 </head>
 <body>
  <%
-	int number1 = Integer.valueOf(request.getParameter("number1"));
- 	String operator = request.getParameter("operator");
-	int number2 = Integer.valueOf(request.getParameter("number2"));
-	
-	double result = 0; // null 이 없는 타입
-	String printOperator = null;
-	
-	switch(operator){
-	case "plus":
-		result = number1 + number2;
-		printOperator = "+";
-		break;
-	case "minus":
-		result = number1 - number2;
-		printOperator = "-";
-		break;
-	case "multiple":
-		result = number1 * number2;
-		printOperator = "X";
-		break;
-	case "divide":
-		result = (double)number1 / number2;
-		printOperator = "/";
-		break;		
-	}
-	
- %>
+ 		List<String> goodsList = Arrays.asList(new String[]{ 
+		    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
+		});
  	
- 	<div class="container">
- 	<h1>계산 결과</h1>
-	<div class="display-1">
+ 		
+ 
+ %>
+  <div class="container">
+ 	<h1 class="text-center">장보기 목록</h1>
+ 	<table class="table text-center">
+ 		<thead>
+	 		<tr>
+	 			<th>번호</th>
+	 			<th>품목</th>
+	 		</tr>
+ 		</thead>
+ 		<tbody>
 		<%
-			out.print(number1 + " " + printOperator + " " + number2 + " " + " =  ");
-		
-		
-		%>
-		
-		<span class="text-info"><%= result %></span>
-	</div>	
-	</div>
+			for(int i= 0; i < goodsList.size(); i++ ){
+		%>	
+ 		
+ 		<tr>	
+ 			<td><%= i + 1 %></td>
+ 			<td><%= goodsList.get(i) %></td>	
+ 		</tr>
+ 		
+ 		<%
+ 			}
+ 		%>
+ 		</tbody>
+ 	</table>
+ 	<hr>
+ 	</div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계산기</title>
+<title>배탈의 민족</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -14,46 +15,16 @@
 
 </head>
 <body>
- <%
-	int number1 = Integer.valueOf(request.getParameter("number1"));
- 	String operator = request.getParameter("operator");
-	int number2 = Integer.valueOf(request.getParameter("number2"));
+	<div class="container">
+		<h1>메뉴 검색</h1>
+		<form method="get" action="/lesson02/quiz07_1.jsp">
+			<div class="d-flex">
+			<input type="text" name="search" class="form-control col-4">
+			<label><input type="checkbox" name="point" class="mt-3 ml-2">4점 이하 제외</label>
+			</div>
+			<input type="submit" class="btn btn-success mt-3" value="검색">
+		</form>
 	
-	double result = 0; // null 이 없는 타입
-	String printOperator = null;
-	
-	switch(operator){
-	case "plus":
-		result = number1 + number2;
-		printOperator = "+";
-		break;
-	case "minus":
-		result = number1 - number2;
-		printOperator = "-";
-		break;
-	case "multiple":
-		result = number1 * number2;
-		printOperator = "X";
-		break;
-	case "divide":
-		result = (double)number1 / number2;
-		printOperator = "/";
-		break;		
-	}
-	
- %>
- 	
- 	<div class="container">
- 	<h1>계산 결과</h1>
-	<div class="display-1">
-		<%
-			out.print(number1 + " " + printOperator + " " + number2 + " " + " =  ");
-		
-		
-		%>
-		
-		<span class="text-info"><%= result %></span>
-	</div>	
 	</div>
 </body>
 </html>

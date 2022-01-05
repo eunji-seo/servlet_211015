@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계산기</title>
+<title>Insert title here</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -14,46 +14,53 @@
 
 </head>
 <body>
- <%
-	int number1 = Integer.valueOf(request.getParameter("number1"));
- 	String operator = request.getParameter("operator");
-	int number2 = Integer.valueOf(request.getParameter("number2"));
+
 	
-	double result = 0; // null 이 없는 타입
-	String printOperator = null;
+	<%
 	
-	switch(operator){
-	case "plus":
-		result = number1 + number2;
-		printOperator = "+";
-		break;
-	case "minus":
-		result = number1 - number2;
-		printOperator = "-";
-		break;
-	case "multiple":
-		result = number1 * number2;
-		printOperator = "X";
-		break;
-	case "divide":
-		result = (double)number1 / number2;
-		printOperator = "/";
-		break;		
-	}
 	
- %>
- 	
- 	<div class="container">
- 	<h1>계산 결과</h1>
-	<div class="display-1">
-		<%
-			out.print(number1 + " " + printOperator + " " + number2 + " " + " =  ");
-		
-		
-		%>
-		
-		<span class="text-info"><%= result %></span>
-	</div>	
-	</div>
+		int cm = Integer.valueOf(request.getParameter("input"));
+		String[] conversionArr = request.getParameterValues("conversionArr"); // 여러 파라미터를 가져올 때 (checkbox)	
+	
+			
+	%>
+	
+	 <div class="container">
+	 	<h1>길이 변환 결과</h1>
+	 	<h3><%=cm %>cm</h3>
+	 	<hr>
+	 	<h2>
+	 	
+	 		<%
+	 				
+	 		
+	 			for(String type : conversionArr ){
+	 				if(type.equals("인치")){
+	 					double inch = cm * 0.393701;
+	 					out.print(inch + " in<br>");
+	 				}else if(type.equals("야드")){
+	 					double yard = cm * 0.0109361;
+	 					out.print(yard + " yd<br>");
+	 				}else if(type.equals("피트")){
+	 					double feet = cm * 0.0328084;
+	 					out.print(feet + " ft<br>");
+	 				}else if(type.equals("미터")){
+	 					double meter = cm / 100.0;
+	 					out.print(meter + " m<br>");
+	 					
+	 				}
+	 				
+	 			}
+	 		
+	 		%>
+	 		
+	 	</h2>
+	 	
+	 </div>
+	
+
+
+	
+	
 </body>
 </html>
