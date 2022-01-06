@@ -50,25 +50,26 @@ list.add(map);
 			</thead>
 			<tbody>
 			<% 
-				String menu = null;
-			for(int i = 0; i < list.size(); i++){
-				if(list.get(i).containsValue(search)){
+			Iterator<Map<String, Object>> iter =  list.iterator();	
+				while(iter.hasNext()){
+					Map<String, Object> line = iter.next();
 					
+					if(line.get("menu").equals(search)){
 						
-					
-				
+					Object name = line.get("name");
+					Object point1 = line.get("point");
+			
 					
 			%>
 				<tr>
 					<td><%= search %></td>
-					<td><%= list.get(i)%></td>
-					<td><%= list.get(i)%></td>				
+					<td><%= name %></td>
+					<td><%= point1 %></td>				
 				</tr>
 			<%
+}
+					
 				}
-							
-						}
-			
 			
 			%>
 			</tbody>
