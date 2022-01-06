@@ -16,6 +16,9 @@
 </head>
 <body>
 <%
+String search = request.getParameter("search");
+int point = Integer.valueOf(request.getParameter("point"));
+
 List<Map<String, Object>> list = new ArrayList<>();
 Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
 list.add(map);
@@ -35,11 +38,7 @@ list.add(map);
 	<div class="container">
 	<h1 class="text-center">검색 결과</h1>
 		<table class="table text-center">
-		<% 
-		Iterator<String,>
 		
-		
-		%>
 		
 		
 			<thead>
@@ -50,16 +49,27 @@ list.add(map);
 				</tr>
 			</thead>
 			<tbody>
-			<%
-			
-			
+			<% 
+			for(int i = 0; i < list.size(); i++){
+				if(list.get(i).containsValue(search)){
+					
+					if(list.get(i).containsValue(point) == false ){
+						
+					}
+					
+				
+					
 			%>
 				<tr>
-					<td>치킨</td>
-					<td>치킨</td>
-					<td>치킨</td>				
+					<td><%=  %></td>
+					<td><%=  %></td>
+					<td><%=  %></td>				
 				</tr>
 			<%
+				}
+							
+						}
+			
 			
 			%>
 			</tbody>

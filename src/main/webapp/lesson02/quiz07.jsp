@@ -20,7 +20,7 @@
 		<form method="get" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex">
 			<input type="text" name="search" class="form-control col-4">
-			<label><input type="checkbox" name="point" class="mt-3 ml-2">4점 이하 제외</label>
+			<label><input type="checkbox" name="point" class="mt-3 ml-2" value="4" >4점 이하 제외</label>
 			</div>
 			<input type="submit" class="btn btn-success mt-3" value="검색">
 		</form>
