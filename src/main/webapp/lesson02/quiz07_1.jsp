@@ -17,7 +17,7 @@
 <body>
 <%
 String search = request.getParameter("search");
-String point = request.getParameter("point");
+double point = Integer.valueOf(request.getParameter("point"));
 
 List<Map<String, Object>> list = new ArrayList<>();
 Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
@@ -59,7 +59,9 @@ list.add(map);
 					Object name = line.get("name");
 					Object point1 = line.get("point");
 			
-					
+						if(point >= 4.0){
+							
+						
 			%>
 				<tr>
 					<td><%= search %></td>
@@ -67,7 +69,20 @@ list.add(map);
 					<td><%= point1 %></td>				
 				</tr>
 			<%
-}
+						}else{			
+				
+				%>
+				<tr>
+					<td><%= search %></td>
+					<td><%= name %></td>
+					<td><%= point1 %></td>				
+				</tr>
+				
+				
+				<%			
+							
+						}
+					}
 					
 				}
 			
