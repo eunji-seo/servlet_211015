@@ -17,7 +17,7 @@
 <body>
 <%
 String search = request.getParameter("search");
-int point = Integer.valueOf(request.getParameter("point"));
+String point = request.getParameter("point");
 
 List<Map<String, Object>> list = new ArrayList<>();
 Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
@@ -50,20 +50,19 @@ list.add(map);
 			</thead>
 			<tbody>
 			<% 
+				String menu = null;
 			for(int i = 0; i < list.size(); i++){
 				if(list.get(i).containsValue(search)){
 					
-					if(list.get(i).containsValue(point) == false ){
 						
-					}
 					
 				
 					
 			%>
 				<tr>
-					<td><%=  %></td>
-					<td><%=  %></td>
-					<td><%=  %></td>				
+					<td><%= search %></td>
+					<td><%= list.get(i)%></td>
+					<td><%= list.get(i)%></td>				
 				</tr>
 			<%
 				}
