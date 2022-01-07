@@ -17,12 +17,18 @@
 <body>
 	<div class="container">
 		<h1>메뉴 검색</h1>
-		<form method="get" action="/lesson02/quiz07_1.jsp">
+		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex">
+<<<<<<< HEAD
+			<input type="text" name="keyword" class="form-control col-4">
+			<label class="mt-3 ml-2">
+			<input type="checkbox" name="starPointFilter" value="true">4점 이하 제외</label>
+=======
 			<input type="text" name="search" class="form-control col-4">
 			<label><input type="checkbox" name="point" class="mt-3 ml-2" value="4" >4점 이하 제외</label>
+>>>>>>> a369758c13ee1ce19b775f73f4c36b0b56349d50
 			</div>
-			<input type="submit" class="btn btn-success mt-3" value="검색">
+			<input type="submit" class="btn btn-success mt-2" value="검색">
 		</form>
 	
 	</div>

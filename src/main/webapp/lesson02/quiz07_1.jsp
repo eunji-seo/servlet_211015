@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +19,15 @@
 </head>
 <body>
 <%
+<<<<<<< HEAD
+// 메뉴 데이터 
+List<Map<String, Object>> list = new ArrayList<>(); // Object 저장시점 해당 타입으로 다운 캐스팅으로 (instendof) 해줌
+=======
 String search = request.getParameter("search");
 double point = Integer.valueOf(request.getParameter("point"));
 
 List<Map<String, Object>> list = new ArrayList<>();
+>>>>>>> a369758c13ee1ce19b775f73f4c36b0b56349d50
 Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
 list.add(map);
 map = new HashMap<String, Object>() {{ put("name", "BBQ"); put("menu", "치킨"); put("point", 3.8); } };
@@ -34,10 +42,17 @@ map = new HashMap<String, Object>() {{ put("name", "BHC"); put("menu", "치킨")
 list.add(map);
 map = new HashMap<String, Object>() {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
 list.add(map);
+
+
 %>
 	<div class="container">
 	<h1 class="text-center">검색 결과</h1>
 		<table class="table text-center">
+<<<<<<< HEAD
+		<% 
+		
+=======
+>>>>>>> a369758c13ee1ce19b775f73f4c36b0b56349d50
 		
 		
 		
@@ -49,6 +64,23 @@ list.add(map);
 				</tr>
 			</thead>
 			<tbody>
+<<<<<<< HEAD
+			<%
+				String keyword = request.getParameter("keyword");
+				String starPointFilter = request.getParameter("starPointFilter");				
+				// 체크 안함 : null, 체크 함 : "true"
+				boolean exclude = starPointFilter != null; // 체크됨(4점 이하 제외)
+				
+				for (Map<String, Object> item : list) {
+					
+					if (keyword.equals(item.get("menu"))){
+						
+						if (exclude && (double)item.get("point") <= 4.0) { // skip조건 : 체크가됨  && 4점이하 제외
+							continue;
+					
+					
+						}		
+=======
 			<% 
 			Iterator<Map<String, Object>> iter =  list.iterator();	
 				while(iter.hasNext()){
@@ -58,11 +90,23 @@ list.add(map);
 						
 					Object name = line.get("name");
 					Object point1 = line.get("point");
+>>>>>>> a369758c13ee1ce19b775f73f4c36b0b56349d50
 			
 						if(point >= 4.0){
 							
 						
 			%>
+<<<<<<< HEAD
+						<tr>
+							<td><%= item.get("menu") %></td>
+							<td><%= item.get("name") %></td>
+							<td><%= item.get("point") %></td>				
+						</tr>
+			<%
+						
+					}
+				}
+=======
 				<tr>
 					<td><%= search %></td>
 					<td><%= name %></td>
@@ -86,6 +130,7 @@ list.add(map);
 					
 				}
 			
+>>>>>>> a369758c13ee1ce19b775f73f4c36b0b56349d50
 			%>
 			</tbody>
 		</table>
