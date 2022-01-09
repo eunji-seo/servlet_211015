@@ -51,34 +51,26 @@
 		</thead>
 		
 		<%
-			String all = request.getParameter("all");
-			String gronud = request.getParameter("gronud");
-			String drama = request.getParameter("drama");
-			String enter = request.getParameter("enter");
-			String movie = request.getParameter("movie");
-			String sports = request.getParameter("sports");
+		
+			String category = request.getParameter("category");
 			String result = null;
-			for(Map<String, String> item : list){
 			
-				if(item.get("catagory").equals(all)){
-						result = item.get("catagory");
-				}else if (item.get("catagory").equals(drama)){
-						result = item.get("드라마");
-				}else if (item.get("catagory").equals(enter)){
-						result = item.get("예능");
-				}else if (item.get("catagory").equals(movie)){
-						result = item.get("영화");
-				}else if (item.get("catagory").equals(sports)){
-					result = item.get("스포츠");
+			for(Map<String, String> item : list){
+				
+				
+				
+				
+				
 		%>
 		<tbody>
 			<tr>
 				<td><%=item.get("ch") %></td>
 				<td><%=item.get("name") %></td>
-				<td><%= result %></td>
+				<td><%=item.get("category") %></td>
 			</tr>
 		</tbody>
 		<%
+				
 			}
 		%>
 	</table>
