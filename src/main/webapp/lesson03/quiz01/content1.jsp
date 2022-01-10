@@ -66,7 +66,7 @@
 			<tr>
 				<td><%=item.get("ch") %></td>
 				<td><%=item.get("name") %></td>
-				<td><%=item.get("category") %></td>
+				<td><%= item.get("category") %></td>
 			</tr>
 		</tbody>
 		<%

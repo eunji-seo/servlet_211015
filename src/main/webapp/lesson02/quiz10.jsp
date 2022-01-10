@@ -18,20 +18,24 @@
 <body>
 <%
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+	
 	Calendar month = Calendar.getInstance();
-	month.add(Calendar.DATE, 0);
 	
-	SimpleDateFormat sdf2 = new SimpleDateFormat("dd");
+	int y = month.get(Calendar.YEAR);
+	int m = month.get(Calendar.MONTH);
+	int d = month.get(Calendar.DATE);
+
 	Calendar day = Calendar.getInstance();
+	day.set(y,m,1);
 	
-	//int yo = day.get(Calendar.DAY_OF_WEEK);
+	int yo = day.get(Calendar.DAY_OF_WEEK);
 	
+	int last_day = month.getActualMaximum(Calendar.DATE);
 	
 
 %>
 	<div class="container">
-		<h1 class="text-center"><%= sdf.format(month.getTime())%></h1>
+		<h1 class="text-center"><%= y%>년<%= m+1 %>월 달력</h1>
 	
 		<table class="table">
 			<thead>
@@ -45,30 +49,31 @@
 					<th class="text-primary">토</th>
 				</tr>
 			</thead>
-			<%
-				int num = 0;
-				for(int i = 1; i <= 5; i++){
-		
-					
-					day.add(Calendar.DATE, i);	
-			
-			%>
-			
 			<tbody>
 			
 				<tr>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-					<td><%= sdf2.format(day.getTime()) %></td>
-				</tr>
-			<%
-	
-				}
-			%>
+				<%
+			
+				for(int k = 1; k< yo; k++){
+					
+				%>
+					<td></td>
+				<%}%>
+				<%for(int j = 1; j<last_day; j++){ %>		
+					<td> 
+						<%= j %>
+						<% if((yo+j-1)%7 == 0) {%>
+					</td></tr>
+					<tr>
+					<% 
+					}	
+				} 
+						for(int e = 1; e < (7-yo); e++) { 
+						%>
+						<td></td>
+						<%} %>
+					
+					</tr>
 			</tbody>
 			
 		</table>
