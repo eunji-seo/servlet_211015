@@ -26,12 +26,10 @@
 </head>
 <body>
 	<div class="wrap container">
-		<form method="get" action="/lesson03/quiz02/info_template.jsp">
 			<jsp:include page="header.jsp" />
 			<jsp:include page="menu.jsp" />
 			<jsp:include page="info_contents.jsp" />
 			<jsp:include page="footer.jsp" />
-		</form>
 	</div>
 
 </body>

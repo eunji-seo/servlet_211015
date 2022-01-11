@@ -101,9 +101,25 @@
 		}
 		// out.print(target);
 	}
+	// 2. search 검색어로 유입되는 경우
+	
+	if( request.getParameter("search") != null){
+		String search = request.getParameter("search");
+		out.print("####### search:" + search);
+		for (Map<String, Object> item : musicList ){
+			String title = (String)item.get("title");
+			if (title.equals("search")){
+				target = item;
+				break;
+			}
+		}
+	}
 %>
 
-<section class="content1">
+<section>
+	 <%
+	 	if(target != null){
+	 %>
 	<h4>곡 정보</h4>
 	<div class="main d-flex border border-success p-3">
 			
@@ -122,9 +138,6 @@
 				</div>
 				<div class="ml-4">
 					<div><%= target.get("album") %> </div>
-					<%
-						int time = (int)target.get("time");
-					%>
 					<div><%= (int)target.get("time")/60 %>:<%= (int)target.get("time") %> </div>
 					<div><%= target.get("composer") %> </div>
 					<div><%= target.get("lyricist") %> </div>
@@ -136,9 +149,16 @@
 			
 		
 		%>
-	<div>
+	
 		<h3 class="mt-4">가사</h3>
 		<hr>
 		<div>가사 정보 없음</div>
-	</div>
+	<%
+		} // -- if문의 끝
+	 	else { // target이 null일때
+	%>
+		<h1> 찾는 정보 없음</h1>
+	<%
+	 	}
+	%>
 </section>
