@@ -85,7 +85,7 @@
 
 <%
 	// 상세 곡 정보를 보여줄 target Map 세팅 
-	Map<String, Object> target = new HashMap<>();
+	Map<String, Object> target = null;
 	
 	// 1. 목록에서 클릭해서 들어오는 경우(a 태그) - id값 
 	if(request.getParameter("id") != null){
@@ -105,7 +105,7 @@
 	
 	if( request.getParameter("search") != null){
 		String search = request.getParameter("search");
-		out.print("####### search:" + search);
+		// out.print("####### search:" + search);
 		for (Map<String, Object> item : musicList ){
 			String title = (String)item.get("title");
 			if (title.equals("search")){
@@ -119,6 +119,7 @@
 <section>
 	 <%
 	 	if(target != null){
+	 		
 	 %>
 	<h4>곡 정보</h4>
 	<div class="main d-flex border border-success p-3">
