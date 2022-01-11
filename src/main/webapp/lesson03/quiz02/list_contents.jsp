@@ -5,14 +5,14 @@
 <%
 
 //아티스트 정보 
-
+// list => table 임 
  Map<String, Object> artistInfo = new HashMap<>();
  artistInfo.put("name", "아이유");
  artistInfo.put("debute", 2008);
  artistInfo.put("agency", "EDAM엔터테인먼트");
  artistInfo.put("photo", "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG");
 
-
+// Map이 한 행임
 //아이유 노래 리스트 
  List<Map<String, Object>> musicList = new ArrayList<>();
 
@@ -97,12 +97,12 @@
 			</div>
 		</div>
 		<!-- 곡 목록 영역 -->
-		<div class="list mt-3">
+		<div class="mt-4">
 			<h4>곡 목록</h4>
 			<table class="table text-center">
 				<thead>
 					<tr>
-						<th>no</th>
+						<th>번호</th>
 						<th>제목</th>
 						<th>앨범</th>
 					</tr>
@@ -110,16 +110,19 @@
 				<tbody>
 				<%
 				
-				for(int i = 0; i < musicList.size(); i++){
 					
-					Map<String, Object> list = musicList.get(i);
+					for(Map<String, Object> info : musicList){
 				
 				
 				%>
 					<tr>
-						<td><%=(i+1)%></td>
-						<td><a href="/lesson03/quiz02/template.jsp?id=<%= list.get("id")%>"><%= list.get("title") %></a></td>
-						<td><%= list.get("album") %></td>
+						<td><%=info.get("id")%></td>
+						<td>
+						<a href="/lesson03/quiz02/info_template.jsp?id=<%=info.get("id")%>">
+							<%= info.get("title") %>
+						</a>
+						</td>
+						<td><%= info.get("album") %></td>
 					</tr>
 					
 				<%}%>

@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<!-- bootstrap -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <%
 
@@ -88,43 +82,63 @@
  musicInfo.put("lyricist", "아이유");
  musicList.add(musicInfo);
 %>
-<style>
-	.main{border: 1px soild green}
-</style>
-<div class="content1">
-	<div class="main d-flex">
-		<%
-		Map<String, Object> target = new HashMap<>();
-			int id = Integer.parseInt(request.getParameter("id"));
-			for(int i = 0; i < musicList.size(); i++){
-				Map<String, Object> item = musicList.get(i);
-					
-					
-		%>
+
+<%
+	// 상세 곡 정보를 보여줄 target Map 세팅 
+	Map<String, Object> target = new HashMap<>();
+	
+	// 1. 목록에서 클릭해서 들어오는 경우(a 태그) - id값 
+	if(request.getParameter("id") != null){
+		int id = Integer.parseInt(request.getParameter("id"));
+		//out.print("################ id" + id);
+		for(Map<String, Object>  item : musicList ) {
+			if((int)item.get("id") == id){
+				target = item;
+				break;
+		
+			}
+		
+		}
+		// out.print(target);
+	}
+%>
+
+<section class="content1">
+	<h4>곡 정보</h4>
+	<div class="main d-flex border border-success p-3">
+			
+		
+		<div class="album_cover">
 		
 			<img
-				src=<%=item.get("thumbnail") %> alt=""  width="200"/>
-
-		<div class="ml-3">
-			<div class="display-4 "><%=item.get("title") %></div>
-			<div class="text-success"> <%=item.get("singer") %></div>
-			<div>앨범  <%= item.get("album") %> </div>
-			<div>재생시간 <%= item.get("time") %> </div>
-			<div>작곡가  <%= item.get("composer") %> </div>
-			<div>작사가  <%= item.get("lyricist") %> </div>
+				src=<%=target.get("thumbnail") %> alt="album"  width="180"/>
 		</div>
-		
-		
-		
+		<div class="album_info ml-4">
+			<div class="display-4 "><%=target.get("title") %></div>
+			<div class="text-success font-weight-bold"> <%=target.get("singer") %></div>
+			<div class="d-flex mt-3 music-info-text">
+				<div class="">
+					앨범<br>재생시간<br>작곡가<br>작사가
+				</div>
+				<div class="ml-4">
+					<div><%= target.get("album") %> </div>
+					<%
+						int time = (int)target.get("time");
+					%>
+					<div><%= (int)target.get("time")/60 %>:<%= (int)target.get("time") %> </div>
+					<div><%= target.get("composer") %> </div>
+					<div><%= target.get("lyricist") %> </div>
+				</div>
+			</div>
+		</div>
 	</div>
 		<%
-					
-			}
+			
 		
 		%>
 	<div>
-		<h2>가사</h2>
+		<h3 class="mt-4">가사</h3>
 		<hr>
-		<b>가사정보 없음</b>
+		<div>가사 정보 없음</div>
 	</div>
-</div>
+</section>

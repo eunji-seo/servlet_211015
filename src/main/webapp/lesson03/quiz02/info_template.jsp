@@ -19,16 +19,17 @@
 	.main{border: 1px solid green; padding:20px;}
 	header{height:150px;}
 	nav{height:50px}
-	footer{height:50px; margin:30px}
+	footer{height:100px;}
 	search-bar{wdith:450px}
+	.music-info-text{font-size:12px; color:#777;}
 </style>
 </head>
 <body>
 	<div class="wrap container">
-		<form method="get" action="/lesson03/quiz02/list_template.jsp">
+		<form method="get" action="/lesson03/quiz02/info_template.jsp">
 			<jsp:include page="header.jsp" />
 			<jsp:include page="menu.jsp" />
-			<jsp:include page="list_contents.jsp" />
+			<jsp:include page="info_contents.jsp" />
 			<jsp:include page="footer.jsp" />
 		</form>
 	</div>
