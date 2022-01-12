@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<section class="">
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<!-- [{},{},{}...] -->
+
 <%
     List<Map<String, String>> list = new ArrayList<>();
     Map<String, String> map = new HashMap<String, String>() {{ put("ch", "5"); put("name", "SBS"); put("category", "지상파"); } };
@@ -41,6 +45,8 @@
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
 %>
+<section>
+
 	<table class="table text-center">
 		<thead>
 			<tr>
@@ -50,27 +56,29 @@
 			</tr>
 		</thead>
 		
+		<tbody>
 		<%
 		
 			String category = request.getParameter("category");
+			// 전체 : category == null
+			// 카테고리 선택 : category 카테고리명 
+			
 			String result = null;
 			
+			
 			for(Map<String, String> item : list){
-				
-				
-				
-				
+				if(category == null || category.equals(item.get("category"))){
+					
 				
 		%>
-		<tbody>
 			<tr>
-				<td><%=item.get("ch") %></td>
-				<td><%=item.get("name") %></td>
+				<td><%= item.get("ch") %></td>
+				<td><%= item.get("name") %></td>
 				<td><%= item.get("category") %></td>
 			</tr>
 		</tbody>
 		<%
-				
+				}
 			}
 		%>
 	</table>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="text-center">
-	<small>Copyright 2021. marondal All Rights Reserved</small>
+<footer class="">
+	<hr>
+	<small>Copyright 2021, melong Rights Reserved</small>
 </footer>
