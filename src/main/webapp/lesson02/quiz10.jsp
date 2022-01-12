@@ -35,7 +35,7 @@
 
 %>
 	<div class="container">
-		<h1 class="text-center"><%= y%>년<%= m+1 %>월 달력</h1>
+		<h1 class="text-center"><%= y%>-<%= m+1 %></h1>
 	
 		<table class="table">
 			<thead>
@@ -62,7 +62,7 @@
 				<%for(int j = 1; j<last_day; j++){ %>		
 					<td> 
 						<%= j %>
-						<% if((yo+j-1)%7 == 0) {%>
+						<% if((yo+j-1)%7 ==0) {%>
 					</td></tr>
 					<tr>
 					<% 
@@ -71,7 +71,7 @@
 						for(int e = 1; e < (7-yo); e++) { 
 						%>
 						<td></td>
-						<%} %>
+						<%} %> 
 					
 					</tr>
 			</tbody>
