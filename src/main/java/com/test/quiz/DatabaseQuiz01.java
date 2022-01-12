@@ -23,10 +23,11 @@ public class DatabaseQuiz01 extends HttpServlet{
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connection();
 		
-		// insert 퀀리 
+	
 		
 		
 		try {
+			// insert 퀀리 
 			String insertQuery = "insert into `real_estate` (`realtorId`,`address`,`area`,`type`,`price`,`rentPrice`)"
 					+ "values(3,'헤라펠리스 101동 5305호',350,'매매',1500000,null)";
 			mysqlService.update(insertQuery);
