@@ -13,44 +13,51 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.common.MysqlService;
 
 @WebServlet("/db/quiz01")
-public class DatabaseQuiz01 extends HttpServlet {
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+public class DatabaseQuiz01 extends HttpServlet{
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		response.setContentType("text/plain");
-		response.setCharacterEncoding("utf-8");
-	
-		MysqlService mysqlService = MysqlService.getInstance(); // DB 연결을 위한 객체 생성(싱글턴이라 한개만 생성됨)
-		mysqlService.connection(); // DB 연결
 		
-		//-- 쿼리 수행
-		// insert
-		String insertQuery = "insert into `used_goods`(`title`, `price`, `description`, `sellerId`)"
-				+ "values ('고양이 간식 팝니다.', 2000, '저희 고양이가 입맛이 까다로워서 잘 안먹어요 ㅠ', 5)";
+		// DB 연결 
+		
+		MysqlService mysqlService = MysqlService.getInstance();
+		mysqlService.connection();
+		
+		// insert 퀀리 
+		
 		
 		try {
+			String insertQuery = "insert into `real_estate` (`realtorId`,`address`,`area`,`type`,`price`,`rentPrice`)"
+					+ "values(3,'헤라펠리스 101동 5305호',350,'매매',1500000,null)";
 			mysqlService.update(insertQuery);
+			// select 쿼리			
+			
+			// select query -> 처리(출력)
+			String selectQuery = "select * from `real_estate` order by `id` desc limit 10;";
+			ResultSet resultSet = mysqlService.select(selectQuery);	
+			
+	
+			PrintWriter out = response.getWriter();
+			while(resultSet.next()) {
+				//매물 주소, 면적, 타입
+				String address = resultSet.getString("address");
+				int area = resultSet.getInt("area");
+				String type = resultSet.getString("type");
+				// 결과 출력
+				out.println("매물 주소:"+ address + ",면적:" + area + ",타입:"+ type);
+			}
+			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace(); // PrintWriter 예외 처리 
 		}
 		
-		// select
-		String selectQuery = "select * from used_goods";
+
 		
-		PrintWriter out = response.getWriter();
-		ResultSet resultSet;
-		try {
-			resultSet = mysqlService.select(selectQuery);
-			while (resultSet.next()) {  // 결과 행이 있는 동안 수행
-				out.println(resultSet.getInt("id"));
-				out.println(resultSet.getString("title"));
-				out.println(resultSet.getInt("price"));
-				out.println(resultSet.getString("description"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//-- 쿼리 끝
 		
-		mysqlService.disconnection(); // DB 연결 해제
+		// DB 연결 해제
+		
+		mysqlService.disconnection();
 	}
 }
