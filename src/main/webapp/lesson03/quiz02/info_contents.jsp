@@ -108,7 +108,7 @@
 		// out.print("####### search:" + search);
 		for (Map<String, Object> item : musicList ){
 			String title = (String)item.get("title");
-			if (title.equals("search")){
+			if (title.equals(search)){
 				target = item;
 				break;
 			}

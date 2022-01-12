@@ -29,7 +29,7 @@ public class MysqlService {
 	}
 
 	public void connection() {
-		// 1. jdbc 드라이버를 메모리에 로딩 // pckg 위치 드라이버 생성자
+		// 1. jdbc 드라이버를 메모리에 로딩 // pkg 위치 드라이버 생성자
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			
