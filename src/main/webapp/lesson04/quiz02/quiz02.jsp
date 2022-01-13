@@ -22,19 +22,20 @@
 	mysql.connection();
 
 	// select query
-	
-	String query = "select * from `email`";
+	String query = "select * from `site` order by `id` desc";
 	ResultSet result = mysql.select(query);
 	
 %>
 	<div class="container">
-		<table  class="table">
+		<h1 class="text-center">즐거찾기 목록</h1>
+		<table  class="table text-center">
 			<thead>
 				<tr>
 				
 					<th>번호</th>
 					<th>사이트</th>
 					<th>사이트 주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -46,7 +47,7 @@
 				<tr>
 					<td><%=result.getInt("id") %></td>
 					<td><%=result.getString("name") %></td>
-					<td><a href=""><%=result.getString("url") %></a></td>
+					<td><a href=<%=result.getString("url") %> target="_brank"><%=result.getString("url") %></a></td>
 					<td><a href="/db/quiz01_delete?id=<%= result.getInt("id")%>">삭제</a></td>
 				</tr>
 				<%

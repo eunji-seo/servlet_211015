@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("/db/quiz01_insert")
-public class DatabaseQuiz01Insert extends HttpServlet {
+@WebServlet("/db/quiz02_insert")
+public class DatabaseQuiz02Insert extends HttpServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -25,7 +25,7 @@ public class DatabaseQuiz01Insert extends HttpServlet {
 			mysql.connection();
 		
 		//email 테이블 insert
-			String insertQuery = "insert into `email`(`name`,`url`)"
+			String insertQuery = "insert into `site`(`name`,`url`)"
 					+ "values('"+ name +"','"+ url +"')";
 
 			try {
@@ -37,7 +37,7 @@ public class DatabaseQuiz01Insert extends HttpServlet {
 		// DB 연결 해제
 			mysql.disconnection();
 		// 리다이렉트 목록 화면
-			response.sendRedirect("/lesson04/quiz01/quiz01.jsp");
+			response.sendRedirect("/lesson04/quiz02/quiz02.jsp");
 	}
 
 }

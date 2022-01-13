@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("/db/quiz01_delete")
-public class DatabaseQuiz01Delete extends HttpServlet{
+@WebServlet("/db/quiz02_delete")
+public class DatabaseQuiz02Delete extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -23,7 +23,7 @@ public class DatabaseQuiz01Delete extends HttpServlet{
 		
 		//id 값으로 delete query 수행
 			
-			String deleteQuery = "delete from `email` where `id` = " + id;
+			String deleteQuery = "delete from `site` where `id` = " + id;
 			
 			try {
 				mysql.update(deleteQuery);
@@ -37,7 +37,7 @@ public class DatabaseQuiz01Delete extends HttpServlet{
 		
 		//	리다이렉트 ->quiz01
 			
-			response.sendRedirect("/lesson04/quiz01/quiz01.jsp");
+			response.sendRedirect("/lesson04/quiz02/quiz02.jsp");
 	}
 	
 
