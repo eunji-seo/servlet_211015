@@ -15,7 +15,7 @@ public class DatabaseQuiz02Delete extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//쿼리 파라미터 id값 얻는다 
+		//request 파라미터 꺼낸다. 
 			int id = Integer.valueOf(request.getParameter("id"));
 		//DB 연결
 			MysqlService mysql = MysqlService.getInstance();
@@ -35,7 +35,7 @@ public class DatabaseQuiz02Delete extends HttpServlet{
 			
 			mysql.disconnection();
 		
-		//	리다이렉트 ->quiz01
+		//	리다이렉트 -> 즐거찾기 목록 (quiz02.jsp)
 			
 			response.sendRedirect("/lesson04/quiz02/quiz02.jsp");
 	}

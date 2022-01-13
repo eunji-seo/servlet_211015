@@ -32,10 +32,10 @@
 			<thead>
 				<tr>
 				
-					<th>번호</th>
+				
 					<th>사이트</th>
 					<th>사이트 주소</th>
-					<th></th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,10 +45,10 @@
 			
 			%>
 				<tr>
-					<td><%=result.getInt("id") %></td>
+					
 					<td><%=result.getString("name") %></td>
 					<td><a href=<%=result.getString("url") %> target="_brank"><%=result.getString("url") %></a></td>
-					<td><a href="/db/quiz01_delete?id=<%= result.getInt("id")%>">삭제</a></td>
+					<td><a href="/db/quiz02_delete?id=<%= result.getInt("id")%>" class=" btn btn-danger">삭제</a></td>
 				</tr>
 				<%
 			}

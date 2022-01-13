@@ -9,25 +9,31 @@
 	mysql.connection();
 	
 	//selec query
-	String selectQuery = "select * from `used_goods` order by `id` desc";
+	String selectQuery = "select A.*, B.* from seller AS A join used_goods AS B on A.id = B.sellerId";
 	ResultSet result = mysql.select(selectQuery);
 		
 	// 
 
 %>
 <section>
-	<div class="list">
-	<%
+<%
 		while(result.next()){
 			
 		
-	%>
+%>
+	<div class="list d-flex col-3">
+	
+	<div>
+		<% 
+			
+		%>
 		<div>
-			<img src=<%= result.getString("") %> alt="">
+			<img src=<%= result.getString("picture") %>  width="150" height="150" alt="">
 		</div>
-		<div></div>
-		<div></div>
-		<div></div>
+		<div><%= result.getString("title") %></div>
+		<div><%= result.getInt("price") %> 원</div>
+		<div><%= result.getString("nickname") %></div>
+	</div>
 	<%
 		}
 	%>
