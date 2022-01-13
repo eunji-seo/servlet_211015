@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.common.MysqlService;
 
 @WebServlet("/db/quiz01_insert")
-public class Databasequiz01Insert extends HttpServlet {
+public class DatabaseQuiz01Insert extends HttpServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
