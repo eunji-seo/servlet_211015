@@ -21,15 +21,26 @@
 			
 		
 %>
-	<div class="list d-flex col-3">
+	<div class="list d-flex flex-wrap border justify-content-around">
 	
 	<div>
 		<% 
 			
 		%>
+		<%-- <%
+			if(result.getString("picture") != null){
+				out.println("이미지 없음");
+			} else {
+		
+		%> --%>
 		<div>
+		
 			<img src=<%= result.getString("picture") %>  width="150" height="150" alt="">
+		
 		</div>
+		<%-- <%
+		}
+		%> --%>
 		<div><%= result.getString("title") %></div>
 		<div><%= result.getInt("price") %> 원</div>
 		<div><%= result.getString("nickname") %></div>

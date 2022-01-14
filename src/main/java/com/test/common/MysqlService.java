@@ -11,9 +11,9 @@ public class MysqlService {
 	
 	// 도메인 뒤에 접속할 database명까지 써준다.
 	//boram_211015
-	private String url = "jdbc:mysql://localhost:3306/boram_211015";
+	private String url = "jdbc:mysql://localhost:3306/eunji220113";
 	private String id = "root";
-	private String pw = "root";
+	private String pw = "rootroot";
 	//root
 	
 	private Connection conn = null;
