@@ -1,6 +1,7 @@
 package com.test.quiz;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
@@ -16,24 +17,27 @@ public class DatabaseQuiz03Insert extends HttpServlet{
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 파라미터 받아오기 
-			String nickname = request.getParameter("nickname");
+			String sellerId = request.getParameter("sellerId");
 			String title = request.getParameter("title");
 			String price = request.getParameter("price");
 			String description = request.getParameter("description");
 			String picture = request.getParameter("picture");
-			
+
+		
 		// DB 연결 
 			MysqlService mysql = MysqlService.getInstance();
 			mysql.connection();
+			
+		
 		// insert 문 + update
-			String insertQuery1 = "insert into `user_goods`(`title`,`price`,`description`,`picture`)"
-					+ "values('"+ title +"','" + price +"','" +description +"','"+ picture + "')";
-			String insertQuery2 = "insert into `seller`(`nickname`)"
-					+  "values('"+ nickname +"')";
+			String insertQuery1 = "insert into `used_goods`(`sellerId`,`title`,`price`,`description`,`picture`)"
+					+ "values('"+ sellerId +"','"+ title +"','" + price +"','" +description +"','"+ picture + "')";
+			System.out.println(insertQuery1);
+			
 			
 			try {
 				mysql.update(insertQuery1);
-				mysql.update(insertQuery2);
+		
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

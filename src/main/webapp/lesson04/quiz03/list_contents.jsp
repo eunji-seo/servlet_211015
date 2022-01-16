@@ -27,20 +27,27 @@
 		<% 
 			
 		%>
-		<%-- <%
-			if(result.getString("picture") != null){
-				out.println("이미지 없음");
+		<%
+			if(result.getString("picture") == null || result.getString("picture").equals("")){
+		
+		%>
+			<div class="D-flex h-50 justify-content-center align-items-center">
+				<h4 class="text-secondary">이미지 없음 </h4>
+			</div>	
+			
+			
+		<% 
 			} else {
 		
-		%> --%>
+		%>
 		<div>
 		
 			<img src=<%= result.getString("picture") %>  width="150" height="150" alt="">
 		
 		</div>
-		<%-- <%
+		 <%
 		}
-		%> --%>
+		%> 
 		<div><%= result.getString("title") %></div>
 		<div><%= result.getInt("price") %> 원</div>
 		<div><%= result.getString("nickname") %></div>
